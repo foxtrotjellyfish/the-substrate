@@ -1,11 +1,11 @@
-# Substrate Manifest
+# The Substrate — Manifest
 
 **Version:** 0.1.0
 **Created:** 2026-04-06
 
-The substrate is the portable DNA of a Knowledge Workspace Framework (KWF) instance. Everything in this directory is context-independent — it works on any machine, any IDE, any content domain.
+The Substrate is the portable DNA of a Knowledge Workspace Framework (KWF) instance. Everything in this directory is context-independent — it works on any machine, any IDE, any content domain.
 
-## What's Substrate
+## What's In The Substrate
 
 | Category | Contents | Location |
 |---|---|---|
@@ -14,7 +14,7 @@ The substrate is the portable DNA of a Knowledge Workspace Framework (KWF) insta
 | **Scripts** | Portable tooling (timestamp generators, source allocators, linters, index generators, etc.) | Instance `scripts/` (symlinked or copied) |
 | **Directory conventions** | `sources/`, `ledgers/`, `threads/`, `sessions/`, `research/`, `domains/` | Implicit in protocols |
 
-## What's NOT Substrate
+## What's NOT In The Substrate
 
 - **Content** — sources, ledger entries, thread analyses, session logs (instance-specific)
 - **Machine identity** — git config, location state, SSH keys, shortcodes (instance-specific)
@@ -37,9 +37,9 @@ Each protocol has a definition file in `protocols/` with minimum and advanced im
 
 ## Propagation Model
 
-**v0.1:** Substrate is integrated into instances via `git subtree`. Changes made in any instance can be pushed upstream; all instances can pull updates.
+**v0.1:** The Substrate is integrated into instances via `git subtree`. Changes made in any instance can be pushed upstream; all instances can pull updates.
 
-**Future:** As more instances adopt the substrate, a scaffold script reads this manifest and generates new instances. Each instance gets the protocols + scripts + adapted roles for its target platform.
+**Future:** As more instances adopt The Substrate, a scaffold script reads this manifest and generates new instances. Each instance gets the protocols + scripts + adapted roles for its target platform.
 
 ## Changelog
 

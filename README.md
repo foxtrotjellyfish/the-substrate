@@ -1,36 +1,36 @@
-# Substrate
+# The Substrate
 
 **v0.1.0-alpha** · The portable DNA of a Knowledge Workspace Framework.
 
 ---
 
-Substrate is the platform-agnostic protocol layer for AI-augmented knowledge workspaces. It defines **how** persistent, accumulating, agent-augmented knowledge work operates — regardless of which AI tool or IDE sits on top.
+The Substrate is the platform-agnostic protocol layer for AI-augmented knowledge workspaces. It defines **how** persistent, accumulating, agent-augmented knowledge work operates — regardless of which AI tool or IDE sits on top.
 
 ## The Problem
 
 AI agents are stateless. Every session starts from zero. The community has built solutions — knowledge graph plugins, persistent multi-agent environments, session continuity frameworks — but they're all tied to specific platforms. Switch tools and you start over.
 
-Substrate extracts the **protocols** that make these systems work into a layer that any tool can implement through its own adapter.
+The Substrate extracts the **protocols** that make these systems work into a layer that any tool can implement through its own adapter.
 
 ## The Architecture
 
-Substrate is one layer in the **Knowledge Workspace Framework (KWF)**:
+The Substrate is one layer in the **Knowledge Workspace Framework (KWF)**:
 
 | Layer | Name | What it is |
 |---|---|---|
 | 4 | **Plugins / Data Sources** | MCP servers, APIs, capture pipelines, web search |
 | 3 | **Orchestration Engine** | The AI tool / IDE (any platform that can run agents) |
-| 2 | **Substrate** | Protocols, scripts, file conventions, agent role patterns — **this repo** |
+| 2 | **The Substrate** | Protocols, scripts, file conventions, agent role patterns — **this repo** |
 | 1 | **Instance** | A deployed workspace with its own content, identity, and purpose |
 
-Each instance (a specific workspace on a specific machine) inherits the substrate and adapts it to its platform:
+Each instance (a specific workspace on a specific machine) inherits The Substrate and adapts it to its platform:
 
 ```
-substrate/protocols/session-continuity.md     ← platform-agnostic protocol
+the-substrate/protocols/session-continuity.md   ← platform-agnostic protocol
   ↓ adapter for platform A
-  platform-specific rules/config              ← implementation for platform A
+  platform-specific rules/config                ← implementation for platform A
   ↓ adapter for platform B
-  platform-specific rules/config              ← implementation for platform B
+  platform-specific rules/config                ← implementation for platform B
 ```
 
 The protocols are the shared DNA. The adapters are the translation layer. The content is yours.
@@ -60,25 +60,25 @@ Three independent systems — built on different platforms by different people �
 | State survives sessions | Session logs + warm handoffs | PreCompact YAML handoffs | SessionStart/Stop hooks |
 | Navigate, don't load | Index → Status → Detail | 5-layer AST summaries | Skill graph traversal |
 
-These aren't preferences. They're protocols. Substrate extracts them so they can be shared.
+These aren't preferences. They're protocols. The Substrate extracts them so they can be shared.
 
 ## Integration
 
-Substrate is designed to live inside your workspace as a `substrate/` directory.
+The Substrate is designed to live inside your workspace as a `the-substrate/` directory.
 
 **Git subtree** (recommended — files live naturally in your repo):
 ```bash
-# Add substrate as a remote
-git remote add substrate <this-repo-url>
+# Add The Substrate as a remote
+git remote add the-substrate <this-repo-url>
 
 # Pull it into your workspace
-git subtree add --prefix=substrate/ substrate main --squash
+git subtree add --prefix=the-substrate/ the-substrate main --squash
 
 # Pull updates
-git subtree pull --prefix=substrate/ substrate main --squash
+git subtree pull --prefix=the-substrate/ the-substrate main --squash
 
 # Push improvements back
-git subtree push --prefix=substrate/ substrate main
+git subtree push --prefix=the-substrate/ the-substrate main
 ```
 
 **Direct clone** (for exploration):
@@ -88,13 +88,13 @@ git clone <this-repo-url>
 
 ## Status
 
-This is **v0.1.0-alpha**. The protocols are extracted from real systems that have been running for months, but the substrate itself — as a standalone, shared artifact — is new. Expect evolution. The protocols will sharpen as more instances put pressure on them.
+This is **v0.1.0-alpha**. The protocols are extracted from real systems that have been running for months, but The Substrate itself — as a standalone, shared artifact — is new. Expect evolution. The protocols will sharpen as more instances put pressure on them.
 
 ## Directory Structure
 
 ```
-substrate/
-  MANIFEST.md                    ← what's substrate vs not, versioned
+the-substrate/
+  MANIFEST.md                    ← what's in The Substrate, versioned
   protocols/                     ← the eight protocol definitions
     accumulation.md
     session-continuity.md
