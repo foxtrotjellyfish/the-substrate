@@ -33,9 +33,16 @@ UTC-based: `YYYY-MM-DD-HHMMz-{shortcode}.md`
 - `{shortcode}` is machine provenance (2-3 char code from machine registry)
 - Human-friendly local time goes inside the file, not in the filename
 
+## Session Ephemerality
+
+Sessions are meant to be **short-lived and closed fast**. A session that lingers open is losing signal — context drifts, other agents sync around it, and the handoff becomes stale before it's written. Instances should treat sessions older than ~24 hours as likely abandoned. Cleanup of session-runtime artifacts (manifests, temp files) should be aggressive — measured in hours, not days.
+
+This matters more as workspaces scale beyond a single operator. If every team member's sessions are short and closed promptly, the workspace stays coherent. Long-running sessions become invisible state that blocks accurate status reads.
+
 ## Anti-Patterns
 
 - Relying on agent memory across sessions (stateless by design).
 - Writing session logs that narrate instead of structure (future agents parse these).
 - Skipping the handoff because the session "wasn't important" (every session produces artifacts or it didn't happen).
 - Using platform-specific session IDs as the canonical identifier (breaks cross-platform continuity).
+- Leaving sessions open indefinitely — if a session outlives ~24 hours, it should be force-closed or treated as abandoned. The goal is micro sessions that integrate fast, not long-running ambient contexts.
